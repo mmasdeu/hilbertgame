@@ -1,0 +1,47 @@
+name = "Lean Topology game"
+version = "1.1.0"
+extra_files = "extras"
+intro = "src/intro.lean"
+source_base_url = "https://raw.githubusercontent.com/mmasdeu/topologygame/main/"
+
+[[worlds]]
+name = "Set theory"
+id = 1
+levels = [ "src/set_theory_world/level*.lean" ]
+
+[[worlds]]
+name = "Functions"
+id = 2
+parents = [1]
+levels = [ "src/function_world/level*.lean" ]
+
+[[worlds]]
+name = "Basic definitions"
+id = 3
+parents = [2]
+levels = [ "src/basic_defs_world/level*.lean" ]
+
+[[worlds]]
+name = "Interior world"
+id = 4
+parents = [3]
+levels = [ "src/interior_world/level*.lean" ]
+
+[[worlds]]
+name = "Separation world"
+id = 5
+parents = [4]
+levels = [ "src/separation_world/level*.lean" ]
+
+[[worlds]]
+name = "Filter world"
+id = 6
+parents = [5]
+levels = [ "src/filter_world/level*.lean"]
+
+[[worlds]]
+name = "Open and closed world"
+id = 7
+parents = [6]
+levels = [ "src/open_and_closed_world/level*.lean"]
+
