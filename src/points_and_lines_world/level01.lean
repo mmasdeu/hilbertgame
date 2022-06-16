@@ -12,8 +12,8 @@ where `A` and `B` are *exactly the same thing*.
 ### Example:
 If it looks like this in the top right hand box:
 ```
-A B : set X
-⊢ A ∪ B = A ∪ B
+A : Point
+⊢ A = A
 ```
 
 then
@@ -33,12 +33,12 @@ of the form $A = A$, no matter how complicated $A$ is. Let's see it in action!
 Just delete `sorry` and type `refl,` (don't forget the comma!).
 -/
 
-variables {X : Type} -- hide
+variables {Point : Type} -- hide
 
 /- Lemma : no-side-bar
-If A and B are sets, then A ∪ B = A ∪ B.
+If A is a point, then A = A.
 -/
-lemma union_is_union (A B : set X) : A ∪ B = A ∪ B :=
+lemma refl_example (A : Point) : A = A :=
 begin
   refl,
   

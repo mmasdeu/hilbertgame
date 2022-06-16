@@ -40,21 +40,5 @@ appears in the local context.
 In this level we introduce the tactic `intro`. You will need it to get started.
 -/
 
-/- Hint : Click here for a hint, in case you get stuck.
-Try something like `intro h1,` and go from there.
--/
 
-variables {X : Type} -- hide
-
-/- Lemma : no-side-bar
-If A, B and C are sets and A = B, then A ∪ C = B ∪ C.
--/
-lemma example_on_intro (A B : set X) (x : X) (h : A = B) : x ∈ A → x ∈ B :=
-begin
-  intro h1,
-  rw ← h,
-  exact h1,
-  
-  
-end
 

@@ -55,16 +55,4 @@ and also breaks goals of the form `P ↔ Q` into proving each of the implication
 
 You will need to use both features to accomplish this proof.
 -/
-/- Lemma : no-side-bar
-Giving an element `p` of a product type `X × Y` and two subsets `A ⊆ X` `B ⊆ Y`. The element 
-`p` is the set `A × B` (as sets) if only if the first component of `p` is in `A` and the second in `B`.
--/
-lemma mem_prod_iff {p : X × Y} (A: set X) (B : set Y): p ∈ A ×ˢ B ↔ p.1 ∈ A ∧ p.2 ∈ B :=
-begin
-  split;
-  intro h;
-  exact ⟨h.1, h.2⟩
 
-
-
-end

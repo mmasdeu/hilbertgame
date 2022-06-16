@@ -22,16 +22,3 @@ In Lean, the  negation `¬ P` of a statement is a shorthand for `P → false`. T
 start with `exfalso`, and remember that negation is the same as `→ false`.
 -/
 
-variables {X Y : Type} -- hide
-
-/- Lemma : no-side-bar
-We can prove that 1 equals 0 if we have a contradiction in our hypotheses.
--/
-lemma one_eq_zero_of_contradiction (A : set X) (x : X) (h1 : x ∈ A) (h2 : x ∉ A): 1 = 0 :=
-begin
-  exfalso,
-  apply h2,
-  exact h1,
-
-  
-end

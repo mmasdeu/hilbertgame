@@ -43,38 +43,39 @@ note that this is a small letter L, not a number 1).
 ### Example:
 If it looks like this in the top right hand box:
 ```
-A B C : set X
-h : A = B ∪ C
-⊢ A ∪ B = B ∪ C
+A B C : Point
+h1 : A = B
+h2 : B = C
+⊢ A = C
 ```
 
 then
 
-`rw h,`
+`rw h1,`
 
-will change the goal into `⊢ B ∪ C ∪ B = B ∪ C`.
+will change the goal into `⊢ B = C`.
 
 ### Example: 
 You can use `rw` to change a hypothesis as well. 
 For example, if your local context looks like this:
 ```
-A B C D : set X
-h1 : A = B ∩ C
-h2 : B ∪ A = D
-⊢ D = B
+A B C : Point
+h1 : A = C
+h2 : A = B
+⊢ B = C
 ```
-then `rw h1 at h2` will turn `h2` into `h2 : B ∪ B ∩ C = D` (remember operator precedence).
+then `rw h1 at h2` will turn `h2` into `h2 : C = B` (remember operator precedence).
 
 -/
 
 
 /-
 The next tactic we will learn is *rw* (from rewrite). It rewrites equalities. That is,
-if we have a proof `h : A = B` and we want to prove `⊢ A ∩ C = B ∩ C`, then after `rw h` the goal
-will become `⊢ A ∩ C = A ∩ C`, which seems reasonable.
+if we have a proof `h : A = B` and we want to prove `⊢ A = C`, then after `rw h` the goal
+will become `⊢ B = C`.
 
 After many tactics (and `rw` is one of them) Lean tries to apply `refl`. This is why
-in the following proof you may get away with only one tactic application.
+in the following proof you may get away with only two tactic applications.
 
 -/
 
@@ -83,13 +84,14 @@ Delete `sorry` and type `rw h,` (don't forget the comma!). Lean tries `refl` aft
 so you will see that this suffices.
 -/
 
-variables {X : Type} -- hide
+variables {Point : Type} -- hide
 
 /- Lemma : no-side-bar
-If A, B and C are sets and A = B, then A ∪ C = B ∪ C.
+If A, B and C are points with A = B and B = C, then A = C.
 -/
-lemma union_eq (A B C: set X) (h : A = B) : A ∪ C = B ∪ C :=
+lemma example_rw (A B C: Point) (h1 : A = B) (h2 : B = C) : A = C :=
 begin
-  rw h,
+  rw h1,
+  rw h2,
   
 end
