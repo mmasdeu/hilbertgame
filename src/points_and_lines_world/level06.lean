@@ -1,5 +1,5 @@
-import data.set.basic -- hide
-open set -- hide
+import .incidenceplane --hide
+open IncidencePlane --hide
 /- Tactic : apply
 
 ## Summary
@@ -26,5 +26,18 @@ so it suffices to prove $P$".
 In this level we introduce the new tactic `apply`. Look at what it does and try to solve it!
 -/
 
+variables {Ω : Type} [IncidencePlane Ω] --hide
 
+-- The next lemmas allow us to deal with collinearity of sets
+lemma collinear_of_equal {S T : set Ω} (h : S = T ) (hS : collinear S) :  collinear T :=
+begin
+  cases hS with ℓ hℓ,
+  use ℓ,
+  intros P hP,
+  rw ←h at hP,
+  apply hℓ,
+  exact hP,
+
+
+end
 

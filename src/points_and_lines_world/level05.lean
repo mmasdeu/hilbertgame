@@ -1,3 +1,5 @@
+import .incidenceplane --hide
+open IncidencePlane --hide
 /- Tactic : intro
 
 ## Summary:
@@ -36,9 +38,20 @@ appears in the local context.
 
 -/
 
-/-
-In this level we introduce the tactic `intro`. You will need it to get started.
+
+variables {Ω : Type} [IncidencePlane Ω] --hide
+
+/- Lemma : no-side-bar
+If two lines contain two distinct points, then they are the same
 -/
+lemma equal_lines_of_contain_two_points {A B : Ω}	{r s : Line Ω}
+(hAB: A ≠ B)	(hAr: A ∈ r) (hAs: A ∈ s) (hBr: B ∈ r) (hBs: B ∈ s) :	r = s :=
+begin
+  rw incidence hAB hAr hBr,
+  rw incidence hAB hAs hBs,
+
+
+end
 
 
 
