@@ -8,14 +8,15 @@ Learn Lean with the Hilbert plane!
 # What is this game?
 
 In this game, you will learn the basics of Lean using as examples some
-facts about geometry. Travel through different worlds solving challenges. On the left side 
-of the screen you will find tactics and theorems you can use.
+facts about geometry. Travel through different worlds solving challenges.
 
 Have fun!
 
 # Credits
 
-The BIYSC team on "Can computers do math?" at UAB
+The BIYSC team on "Can computers do math?" at UAB.
+
+Some of the tactic descriptions are taken/adapted from the original Natural Number Game (https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/).
 
 Lean is a computer theorem prover being developed at Microsoft Research.
 

@@ -1,4 +1,4 @@
-import .incidenceplane --hide
+import tutorial_world.incidenceplane --hide
 open IncidencePlane --hide
 
 /- Axiom : line_through_left
@@ -17,7 +17,7 @@ and the appropriate hypotheses.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Lemma:  no-side-bar
+/- Lemma :  no-side-bar
 A point lies in the line through it.
 -/
 lemma point_on_line {A B : Ω} {r : Line Ω} :

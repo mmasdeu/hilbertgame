@@ -51,7 +51,7 @@ a new hypothesis in the context. You can learn more about it in the side bar.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Lemma
+/- Lemma :
 If two lines contain two distinct points, then they are the same
 -/
 lemma equal_lines_of_contain_two_points {A B : Ω} {r s : Line Ω} :

@@ -58,7 +58,7 @@ finish the prove very easily.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Lemma :
+/- Lemma : no-side-bar
 If two lines share two distinct points then they are the same
 -/
 lemma equal_lines_example (B C : Ω) (h : B ≠ C) (r s : Line Ω)

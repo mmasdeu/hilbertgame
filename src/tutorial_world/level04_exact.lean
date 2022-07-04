@@ -39,12 +39,12 @@ The lemma is the same as in the previous level, but we will solve it in a differ
 By doing a `rw` you will get the goal to look exactly like one of the hypotheses...
 -/
 
-variables {Point : Type} -- hide
+variables {Ω : Type} -- hide
 
 /- Lemma : no-side-bar
 If A, B and C are points with A = B and B = C, then A = C.
 -/
-lemma example_exact (A B C: Point) (h1 : A = B) (h2 : B = C) : A = C :=
+lemma example_exact (A B C: Ω) (h1 : A = B) (h2 : B = C) : A = C :=
 begin
   rw h1,
   exact h2,
