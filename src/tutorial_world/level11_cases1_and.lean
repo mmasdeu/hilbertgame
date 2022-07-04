@@ -63,7 +63,7 @@ as proofs of `P` and `Q`.
 -/
 
 /- Lemma : no-side-bar
-...
+Bon dia
 -/
 lemma line_through_from_and (P Q : Ω) (ℓ : Line Ω) (h1 : P ≠ Q)
 (h2 : P ∈ ℓ ∧ Q ∈ ℓ) : ℓ = line_through P Q :=
