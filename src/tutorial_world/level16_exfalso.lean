@@ -1,4 +1,4 @@
-import .incidenceplane -- hide
+import tutorial_world.incidenceplane -- hide
 import data.set.basic -- hide
 open set IncidencePlane -- hide
 

@@ -1,4 +1,4 @@
-import .incidenceplane --hide
+import tutorial_world.incidenceplane --hide
 open IncidencePlane --hide
 
 /- Tactic : simp
