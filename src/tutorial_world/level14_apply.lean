@@ -23,22 +23,23 @@ so it suffices to prove $P$".
 -/
 
 /-
-In this level we introduce the new tactic `apply`. Look at what it does and try to solve it!
+In this level we introduce the new tactic `apply`. Suppose that you have a theorem `h`
+that states exactly that your goal is true, provided that some hypotheses are satisfied. Then
+`apply h` will change your goal into proving your new hypotheses.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
 /- Lemma :
-If two sets S and T are equal and S is colliner, then so is T.
+The line through two points is a symmetrical concept
 -/
-lemma collinear_of_equal {S T : set Ω} (h : S = T ) (hS : collinear S) :  collinear T :=
+lemma line_through_symmetrical {P Q : Ω} (h : P ≠ Q) : line_through Q P = line_through P Q :=
 begin
-  cases hS with ℓ hℓ,
-  use ℓ,
-  intros P hP,
-  rw ←h at hP,
-  apply hℓ,
-  exact hP,
+  apply incidence,
+  exact h,
+  exact line_through_right Q P,
+  exact line_through_left Q P,
+
 
 
 end

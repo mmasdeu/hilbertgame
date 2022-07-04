@@ -66,7 +66,7 @@ then `rw h1 at h2` will turn `h2` into `h2 : C = B` (remember operator precedenc
 
 
 /-
-The next tactic we will learn is *rw* (from rewrite). It rewrites equalities. That is,
+The next tactic we will learn is `rw` (from rewrite). It rewrites equalities. That is,
 if we have a proof `h : A = B` and we want to prove `⊢ A = C`, then after `rw h` the goal
 will become `⊢ B = C`.
 

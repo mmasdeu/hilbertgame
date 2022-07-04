@@ -1,41 +1,6 @@
 import .incidenceplane --hide
 open set IncidencePlane --hide
 
-/- Tactic : ext
-
-## Summary
-
-If `A` and `B` are sets and the goal is `A = B`, then
-using the `ext` tactic will change it to `x ∈ A ↔ x ∈ B`.
-
-Variant: `ext y` will change the goal to `y ∈ A ↔ y ∈ B`.
-
-## Details
-
-This tactic applies the "extensionality" axiom of set theory,
-which says that two sets are equal iff for all `x`, `x` belongs
-to the first iff `x` belongs to the second.
-
-### Example:
-If it looks like this in the top right hand box:
-```
-A B : set X
-⊢ A = B
-```
-
-then
-
-`ext,`
-
-will change the goal into
-```
-A B : set X
-x : X
-⊢ x ∈ A ↔ x ∈ B
-```
--/
-
-
 /- Tactic : cases
 
 ## Summary:
@@ -44,7 +9,7 @@ x : X
 If `h : P ∧ Q` or `h : P ↔ Q` is a hypothesis then `cases h with h1 h2` will remove `h`
 from the list of hypotheses and replace it with the "ingredients" of `h`,
 i.e. `h1 : P` and `h2 : Q`, or `h1 : P → Q` and `h2 : Q → P`. Also
-works with `h : P ∨ Q` and `n : mynat`. 
+works with `h : P ∨ Q` and with `h : ∃ x, P x`. 
 
 ## Details
 
@@ -85,31 +50,28 @@ into two, one with `p : P` and the other with `q : Q`.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-lemma one_point_segment (A : Ω) : ({A} : set Ω) = A⬝A :=
+/-
+The next tactic we introduce is `cases`, and since it does many things
+we will have a couple levels seeing when to apply it. This tactic works
+always on hypotheses, and it transforms them in different ways. The first
+instance that we learn arises when you have a hypothesis that says that `P`
+or `Q` holds. That is, you have `h : P ∧ Q`. Then `cases h with h₁ h₂` will 
+replace `h` with two new hypotheses, namely `h₁ : P` and `h₂ : Q`.
+
+This is done usually for aesthetic reasons, since `h.1` and `h.2` also serve
+as proofs of `P` and `Q`.
+-/
+
+/-
+Example :
+If X is any set in Ω and either P or Q is in X, then X is not empty.
+-/
+example (P Q : Ω) (ℓ : Line Ω) (h1 : P ≠ Q) (h2 : P ∈ ℓ ∧ Q ∈ ℓ) : ℓ = line_through P Q :=
 begin
-  ext,
-  split,
-  {
-    intro hx,
-    left,
-    exact hx,
-  },
-  {
-    intro hx,
-    cases hx,
-    {
-      exact hx,
-    },
-    {
-      cases hx,
-      {
-        exact hx,
-      },
-      {
-        exfalso,
-        apply (different_of_between hx).2.1,
-        refl,
-      }
-    }
-  }
+  cases h2 with hP hQ,
+  exact incidence h1 hP hQ,
+
+
+
 end
+
