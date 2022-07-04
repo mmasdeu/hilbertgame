@@ -1,5 +1,20 @@
 import .incidenceplane --hide
 open IncidencePlane --hide
+
+/- Axiom : line_through_left
+
+line_through_left (P Q : Point) : P ∈ (line_through P Q)
+-/
+/- Axiom : line_through_right
+
+line_through_right (P Q : Point) : Q ∈ (line_through P Q)
+-/
+
+/- Axiom : incidence
+
+incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q
+-/
+
 /- Tactic : intro
 
 ## Summary:
@@ -38,15 +53,20 @@ appears in the local context.
 
 -/
 
+/-
+This level introduces the `intros` tactic. This allows you to introduce
+a new hypothesis in the context. You can learn more about it in the side bar.
+-/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
 /- Lemma : no-side-bar
 If two lines contain two distinct points, then they are the same
 -/
-lemma equal_lines_of_contain_two_points {A B : Ω}	{r s : Line Ω}
-(hAB: A ≠ B)	(hAr: A ∈ r) (hAs: A ∈ s) (hBr: B ∈ r) (hBs: B ∈ s) :	r = s :=
+lemma equal_lines_of_contain_two_points : ∀ {A B : Ω}, ∀ {r s : Line Ω},
+A ≠ B → A ∈ r →  A ∈ s → B ∈ r → B ∈ s → 	r = s :=
 begin
+  intros A B r s hAB hAr hAs hBr hBs,
   rw incidence hAB hAr hBr,
   rw incidence hAB hAs hBs,
 

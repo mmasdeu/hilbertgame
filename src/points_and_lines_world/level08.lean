@@ -17,19 +17,6 @@ For example, if we have `h : ¬ P` as a hypothesis and we apply `exfalso`
 we can then `apply h` to transform the goal into `⊢ P`.
 -/
 
-/- Axiom : line_through_left
-
-line_through_left (P Q : Point) : P ∈ (line_through P Q)
--/
-/- Axiom : line_through_right
-
-line_through_right (P Q : Point) : Q ∈ (line_through P Q)
--/
-
-/- Axiom : incidence
-
-incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q
--/
 
 /-
 In this level we introduce the new tactic `exfalso`. Look at what it does, it is a bit
