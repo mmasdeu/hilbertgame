@@ -70,7 +70,7 @@ jobs:
           cp build/shell/* "Lean-game-maker/src/interactive_interface/lean_server/leanprover-community/lean:$LATEST_BROWSER_LEAN/"
 
       - name: Make game
-        run: make-lean-game --source_base_url=$source_base_url --web_editor_url=$web_editor_url
+        run: make-lean-game
 
     ## Now we generate the editor ##
 
