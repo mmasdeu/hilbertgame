@@ -58,21 +58,21 @@ finish the prove very easily.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Example :
-Prove the lemma below
+/- Lemma :
+If two lines share two distinct points then they are the same
 -/
-example (A B C D : Ω) (h : B ≠ C) (r s : Line Ω)
-(h1 : A ∈ r ∧ B ∈ r ∧ C ∈ r)
-(h2 : B ∈ s ∧ C ∈ s ∧ D ∈ s)
+lemma equal_lines_example (B C : Ω) (h : B ≠ C) (r s : Line Ω)
+(h1 :  B ∈ r ∧ C ∈ r)
+(h2 : B ∈ s ∧ C ∈ s)
 : r = s :=
 begin
   have hr : r = line_through B C,
   {
-    exact incidence h h1.2.1 h1.2.2,
+    exact incidence h h1.1 h1.2,
   },
   have hs : s = line_through B C,
   {
-    exact incidence h h2.1 h2.2.1,
+    exact incidence h h2.1 h2.2,
   },
   rw hr,
   rw hs,
