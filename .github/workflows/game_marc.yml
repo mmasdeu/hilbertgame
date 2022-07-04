@@ -7,18 +7,14 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      production:
-        description: 'Deploy to production (default: false). If false, will deploy to test subfolder.'
-        required: false
-        default: false
+
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     env: 
-      branch: ${{ github.event.inputs.production && 'main' || 'test' }}
-      source_base_url: "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.inputs.production && 'main' || 'test' }}/"
-      web_editor_url: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.event.inputs.production && 'editor/' || 'test/editor' }}"
+      branch: 'main'
+      source_base_url: "https://raw.githubusercontent.com/${{ github.repository }}/main/"
+      web_editor_url: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/editor"
     steps:
       - name: Echo branch
         run: |
@@ -107,12 +103,12 @@ jobs:
       - name: place editor in the website
         run: mv lean-web-editor/dist html/editor
     
-      - name: Deploy ${{ github.event.inputs.production && 'production' || 'test' }}
+      - name: Deploy production
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           token: ${{ secrets.github_token }}
           branch: gh-pages # The branch the action should deploy to.
           folder: ./html # The folder the action should deploy.
-          target-folder: ${{ github.event.inputs.production && '/' || '/test/' }}
+          target-folder: '/'
           single-commit: "true"
-          clean: "false"
+          clean: "true"
