@@ -16,7 +16,7 @@ The goal will then look like ⊢ ∃ x, P x. In this case, the `use` tactic is u
 that an object `a` satisfies the  property `P`, then `use a` will transform the goal into ⊢ P a.
 -/
 
-variables {Ω : Type} [IncidencePlane Ω]
+variables {Ω : Type} [IncidencePlane Ω] --hide
 
 /- Lemma : no-side-bar
 Given a point, there is always a line containing it.

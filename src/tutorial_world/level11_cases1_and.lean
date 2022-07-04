@@ -62,11 +62,11 @@ This is done usually for aesthetic reasons, since `h.1` and `h.2` also serve
 as proofs of `P` and `Q`.
 -/
 
-/-
-Example :
-If X is any set in Ω and either P or Q is in X, then X is not empty.
+/- Lemma : no-side-bar
+...
 -/
-example (P Q : Ω) (ℓ : Line Ω) (h1 : P ≠ Q) (h2 : P ∈ ℓ ∧ Q ∈ ℓ) : ℓ = line_through P Q :=
+lemma line_through_from_and (P Q : Ω) (ℓ : Line Ω) (h1 : P ≠ Q)
+(h2 : P ∈ ℓ ∧ Q ∈ ℓ) : ℓ = line_through P Q :=
 begin
   cases h2 with hP hQ,
   exact incidence h1 hP hQ,
