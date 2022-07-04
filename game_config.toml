@@ -9,3 +9,8 @@ name = "Tutorial World"
 id = 1
 levels = [ "src/tutorial_world/level*.lean" ]
 
+[[worlds]]
+name = "Incidence World"
+id = 2
+parents = [1]
+levels = [ "src/incidence_world/level*.lean" ]
