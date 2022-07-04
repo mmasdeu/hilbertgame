@@ -7,7 +7,7 @@ and only if `x` is a term of type `X`.
 
 ## Details
 
-Say $P$, $Q$ and $R$ are types (i.e., what a mathematician
+Say `P`, `Q` and `R` are types (i.e., what a mathematician
 might think of as either sets or propositions),
 and the local context looks like this: 
 
@@ -25,8 +25,8 @@ above goal could be solved with
 
 `exact j(h(p)),`
 
-because $j(h(p))$ is easily checked to be a term of type $R$
-(i.e., an element of the set $R$, or a proof of the proposition $R$).
+because `j(h(p))` is easily checked to be a term of type `R`
+(i.e., an element of the set `R`, or a proof of the proposition `R`).
 
 -/
 
