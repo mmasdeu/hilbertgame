@@ -1,5 +1,6 @@
+import .incidenceplane -- hide
 import data.set.basic -- hide
-open set -- hide
+open set IncidencePlane -- hide
 
 /- Tactic : exfalso
 
@@ -16,9 +17,37 @@ For example, if we have `h : ¬ P` as a hypothesis and we apply `exfalso`
 we can then `apply h` to transform the goal into `⊢ P`.
 -/
 
+/- Axiom : line_through_left
+
+line_through_left (P Q : Point) : P ∈ (line_through P Q)
+-/
+/- Axiom : line_through_right
+
+line_through_right (P Q : Point) : Q ∈ (line_through P Q)
+-/
+
+/- Axiom : incidence
+
+incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q
+-/
+
+/-
+In this level we introduce the new tactic `exfalso`. Look at what it does, it is a bit
+strange at first. We will also need one of the axioms for our plane, the one that says that
+the line through two points contains each of them. You can see the statement of this theorem
+on the left sidebar.
+-/
 
 /- Hint : Click here for a hint, in case you get stuck.
 In Lean, the  negation `¬ P` of a statement is a shorthand for `P → false`. Therefore
 start with `exfalso`, and remember that negation is the same as `→ false`.
 -/
 
+variables {Ω : Type} [IncidencePlane Ω] --hide
+
+lemma two_plus_two_equals_five (P Q : Ω) (h: P ∉ line_through P Q) : 2 + 2 = 5:=
+begin
+  exfalso,
+  apply h,
+  exact line_through_left P Q,
+end 

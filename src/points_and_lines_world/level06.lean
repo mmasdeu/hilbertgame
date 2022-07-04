@@ -28,7 +28,9 @@ In this level we introduce the new tactic `apply`. Look at what it does and try 
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
--- The next lemmas allow us to deal with collinearity of sets
+/- Lemma :
+If two sets S and T are equal and S is colliner, then so is T.
+-/
 lemma collinear_of_equal {S T : set Ω} (h : S = T ) (hS : collinear S) :  collinear T :=
 begin
   cases hS with ℓ hℓ,

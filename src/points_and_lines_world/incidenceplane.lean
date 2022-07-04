@@ -48,50 +48,67 @@ class IncidencePlane (Point : Type*) :=
 	(infix `∈`:100 := belongs)
 
 	-- I1 postulate is divided into 4 statements
-	(line_through : Point → Point → Line)
-	(line_through_left (P Q : Point) : P ∈ (line_through P Q))
-	(line_through_right (P Q : Point) : Q ∈ (line_through P Q))
-	(incidence {P Q : Point} {ℓ : Line} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through P Q)
+	(line_through' : Point → Point → Line)
+	(line_through_left' (P Q : Point) : P ∈ (line_through' P Q))
+	(line_through_right' (P Q : Point) : Q ∈ (line_through' P Q))
+	(incidence' {P Q : Point} {ℓ : Line} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q)
 
 	-- I2 postulate
-	(line_contains_two_points (ℓ : Line) : ∃ P Q : Point, P ≠ Q ∧ ℓ = line_through P Q)
+	(line_contains_two_points' (ℓ : Line) : ∃ P Q : Point, P ≠ Q ∧ ℓ = line_through' P Q)
 
 	-- I3 postulate (existence postulate)
-	(existence : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R)
+	(existence' : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R)
 
 	-- Betweenness is an undefined concept
 	(between : Point → Point → Point → Prop)
 	(notation A `*` B `*` C := between A B C)
 
 	/- Betweenness is symmetric -/
-	(between_symmetric {A B C : Point} : (A * B * C) → (C * B * A))
+	(between_symmetric' {A B C : Point} : (A * B * C) → (C * B * A))
 	/- If A * B * C then the three points are distinct and collinear. -/
-	(different_of_between {A B C : Point} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C))
-	(collinear_of_between {A B C : Point} : (A * B * C) → ∃ ℓ, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ)
+	(different_of_between' {A B C : Point} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C))
+	(collinear_of_between' {A B C : Point} : (A * B * C) → ∃ ℓ, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ)
 
 	/- Given two distinct points A, B, there is a third point C such that A * B * C.-/
-	(point_on_ray {A B : Point} (h: A ≠ B) : ∃ C, A * B * C)
+	(point_on_ray' {A B : Point} (h: A ≠ B) : ∃ C, A * B * C)
 
 	/- Given 3 distinct collinear points A B C, exactly one of them is between the other two.-/
-	(between_of_collinear {A B C : Point} (h: ∃ℓ, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ) : xor3 (A * B * C) ( B * A * C ) (A * C * B))
+	(between_of_collinear' {A B C : Point} (h: ∃ℓ, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ) : xor3 (A * B * C) ( B * A * C ) (A * C * B))
 
 	/- Pasch -/
-	(pasch {A B C D : Point} {ℓ : Line}
-		(hnc: ¬ C ∈ line_through A B)
+	(pasch' {A B C D : Point} {ℓ : Line}
+		(hnc: ¬ C ∈ line_through' A B)
 		(hnAl: ¬ (A ∈ ℓ)) (hnBl: ¬ B ∈ ℓ) (hnCl: ¬ C ∈ ℓ)
 		(hDl: D ∈ ℓ) (hADB: A * D * B) : (∃ E ,  E ∈ ℓ ∧ (A * E * C)) xor (∃ E, E ∈ ℓ ∧ (B * E * C)))
 
-
 namespace IncidencePlane
-variables {Ω : Type*} [IncidencePlane Ω]
+variables {Ω Point : Type*} [IncidencePlane Ω] [IncidencePlane Point]
 
 -- From here on, we can use the symbol `∈` for Lines
 instance : subset (Line Ω) Ω := {mem := belongs}
 
+notation A `*` B `*` C := IncidencePlane.between A B C
+
+
+-- Define again everything
+def line_through (P Q : Ω) : Line Ω := line_through' P Q
+lemma line_through_left (P Q : Point) : P ∈ (line_through P Q) := line_through_left' P Q
+lemma line_through_right (P Q : Point) : Q ∈ (line_through P Q) := line_through_right' P Q
+lemma incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q
+:= incidence'
+lemma existence : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R := existence'
+lemma between_symmetric {A B C : Point} : (A * B * C) → (C * B * A)  := between_symmetric'
+lemma different_of_between {A B C : Point} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C) := different_of_between'
+lemma collinear_of_between {A B C : Point} : (A * B * C) → ∃ ℓ : Line Point, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ := collinear_of_between'
+lemma point_on_ray {A B : Point} (h: A ≠ B) : ∃ (C : Point), A * B * C := point_on_ray' h
+lemma between_of_collinear {A B C : Point} (h: ∃(ℓ : Line Point), A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ) : xor3 (A * B * C) ( B * A * C ) (A * C * B)
+:= between_of_collinear' h
+lemma pasch {A B C D : Point} {ℓ : Line Point} (hnc: ¬ C ∈ line_through' A B)
+(hnAl: ¬ (A ∈ ℓ)) (hnBl: ¬ B ∈ ℓ) (hnCl: ¬ C ∈ ℓ) (hDl: D ∈ ℓ) (hADB: A * D * B) :
+(∃ E ,  E ∈ ℓ ∧ (A * E * C)) xor (∃ E, E ∈ ℓ ∧ (B * E * C)) := pasch' hnc hnAl hnBl hnCl hDl hADB
+
 -- Define collinearity of a set of points to mean that they all lie on some line
 def collinear (S : set Ω) : Prop := ∃ (ℓ : Line Ω), ∀ {P : Ω}, P ∈ S → P ∈ ℓ
-
-notation A `*` B `*` C := IncidencePlane.between A B C
 
 /--
 Two lines intersect if they share a point
