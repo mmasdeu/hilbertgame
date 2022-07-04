@@ -12,8 +12,7 @@ to satisfy.
 
 -/
 
-/-
-Example :
+/- Example :
 
 -/
 example (P Q R S : Ω) (h : Q ≠ R) (h1 : ∃ ℓ : Line Ω, P ∈ ℓ ∧ Q ∈ ℓ ∧ R ∈ ℓ)

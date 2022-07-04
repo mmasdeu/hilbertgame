@@ -11,8 +11,7 @@ replace `h` with `h : P` in the first case, and with `h : Q` in the second.
 
 -/
 
-/-
-Example :
+/- Example :
 If X is any set in Ω and either P or Q is in X, then X is not empty.
 -/
 example (P Q : Ω) (X : set Ω) (h : P ∈ X ∨ Q ∈ X) : ∃ R, R ∈ X :=

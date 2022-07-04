@@ -58,9 +58,8 @@ finish the prove very easily.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/-
-Example :
-
+/- Example :
+Prove the lemma below
 -/
 example (A B C D : Ω) (h : B ≠ C) (r s : Line Ω)
 (h1 : A ∈ r ∧ B ∈ r ∧ C ∈ r)

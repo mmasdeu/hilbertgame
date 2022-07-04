@@ -32,6 +32,9 @@ start with `exfalso`, and remember that negation is the same as `→ false`.
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
+/- Lemma : no-side-bar
+Prove that 2+2 is 5, using a false hypothesis.
+-/
 lemma two_plus_two_equals_five (P Q : Ω) (h: P ∉ line_through P Q) : 2 + 2 = 5:=
 begin
   exfalso,
