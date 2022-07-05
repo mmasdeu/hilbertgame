@@ -1,5 +1,5 @@
 [package]
-name = "topologygame"
+name = "hilbertgame"
 version = "0.1"
 lean_version = "leanprover-community/lean:3.44.1"
 path = "src"
