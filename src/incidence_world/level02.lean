@@ -1,21 +1,33 @@
 import tutorial_world.incidenceplane --hide
 import .level01 --hide
+import tutorial_world.level06_intro --hide
 open IncidencePlane --hide
 
 /-
-In this level we introduce the new tactic `have`. It is used to add a new hypothesis
-to the context (of course, you will have to prove it!). This is sometimes useful to
-structure our proofs. In this particular level, it is convenient to prove first that
-`r = line_through B C`, then that `s = line_through B C` and that allows us to
-finish the prove very easily.
+Now that we have introduced the basic LEAN tactic is time to prove our 
+first theorems. We will start with some of the theorems you have seen 
+in the theory classes using incidence axioms.
+
+To prove this theorem we will need the lemma, that commes directly from the
+incidence axioms,
+
+lemma line_through_left (P Q : Ω) : P ∈ (line_through P Q)
+
+Similarly, we will also have the lemma
+
+lemma line_through_right (P Q : Ω) : Q ∈ (line_through P Q)
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Lemma :
-If two lines r and s, share two diferent ponts A anb B, then they are equal.
+/- Hint : Click here for a hint, in case you get stuck.
+Remember that you can use the lemmas proved before!
 -/
-lemma exist_point_not_in_line {l : Line Ω} : ∃ (P : Ω), P ∉ l :=
+
+/- Theorem :
+Giving a line there exists a point that it is not in it.
+-/
+theorem exist_point_not_in_line (l : Line Ω) : ∃ (P : Ω), P ∉ l :=
 begin
   rcases (@existence Ω _) with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
   by_cases hA : A ∈ l,
@@ -23,7 +35,6 @@ begin
     by_cases hB : B ∈ l,
     {
       use C,
-      --intro H,
       have ltA := line_through_left A B,
       have ltB := line_through_right A B,
       have : line_through A B = l,

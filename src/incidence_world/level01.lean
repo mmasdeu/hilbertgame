@@ -2,23 +2,27 @@ import tutorial_world.incidenceplane --hide
 open IncidencePlane --hide
 
 /-
-In this level we introduce the new tactic `have`. It is used to add a new hypothesis
-to the context (of course, you will have to prove it!). This is sometimes useful to
-structure our proofs. In this particular level, it is convenient to prove first that
-`r = line_through B C`, then that `s = line_through B C` and that allows us to
-finish the prove very easily.
+To prove some of the theorems in this world we need to introduce the `by_cases` tactic.
+This tactic will split the main goal into two cases, assuming a statement on
+the first case and his negation on the second.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Lemma :
-If two lines r and s, share two diferent ponts A anb B, then they are equal.
+/- Lemma : no-side-bar
+Either a point is in a line or it is not.
 -/
-lemma equal_lines_of_contain_two_points {A B : Ω}	{r s : Line Ω} (hAB: A ≠ B)	
-(hAr: A ∈ r) (hAs: A ∈ s) (hBr: B ∈ r) (hBs: B ∈ s) :	r = s :=
+lemma point_in_line_or_not {A : Ω}	{r : Line Ω} : A ∈ r ∨ A ∉ r :=
 begin
-  rw incidence hAB hAr hBr,
-  rw incidence hAB hAs hBs,
+  by_cases h : A ∈ r,
+  { 
+    left,
+    exact h,
+  },
+  { 
+    right,
+    exact h,
+  }
 
 
   
