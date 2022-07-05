@@ -1,5 +1,5 @@
 import tutorial_world.incidenceplane --hide
-import .level01 --hide
+import incidence_world.level01 --hide
 import tutorial_world.level06_intro --hide
 open IncidencePlane --hide
 
