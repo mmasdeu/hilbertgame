@@ -28,6 +28,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.commitSHA }}
+      - run: git checkout ${{ github.event.inputs.commitSHA }}
 
       - name: Setup Python
         uses: actions/setup-python@v2
