@@ -7,16 +7,12 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      commitSHA:
-        description: 'Specify a commit'
-        required: true
-        default: 'main'
+
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     env: 
-      branch: ${{ github.event.inputs.commitSHA }}
+      branch: 'main'
     steps:
       - name: Echo branch
         run: |
@@ -24,12 +20,11 @@ jobs:
           echo Source base url: $source_base_url
           echo Web editor url: $web_editor_url
 
-      - name: Checkout ${{ github.event.inputs.commitSHA }} branch
+      - name: Checkout main branch
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.inputs.commitSHA }}
-      - run: git checkout ${{ github.event.inputs.commitSHA }}
-
+          ref: ${{ env.branch }}
+  
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
