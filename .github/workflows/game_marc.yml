@@ -49,10 +49,6 @@ jobs:
           repo: ${{ github.repository }}
           access-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: run leanproject up
-        run: |
-          leanproject up
-
       - name: Install Game maker
         run: |
           git clone --depth=1 https://github.com/mmasdeu/Lean-game-maker.git
