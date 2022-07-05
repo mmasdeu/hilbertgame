@@ -27,7 +27,7 @@ jobs:
       - name: Checkout ${{ env.branch }} branch
         uses: actions/checkout@v3
         with:
-          ref: ${{ env.branch }} ${{ github.event.inputs.production }}
+          ref: ${{ env.branch }} ${{ github.event.inputs.commitSHA }}
 
       - name: Setup Python
         uses: actions/setup-python@v2
