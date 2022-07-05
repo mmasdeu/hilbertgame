@@ -2,13 +2,10 @@
 
 name: Update Mathlib and build
 
-# Controls when the workflow will run
 on:
-  schedule:
-    - cron: '0 2 * * 0' # every Sunday
-  # Triggers the workflow on push or pull request events but only for the main and test branch
-  push:
-    branches: [ main, test ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 
 jobs:
   deploy:
