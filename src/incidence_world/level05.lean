@@ -1,4 +1,3 @@
-import tutorial_world.incidenceplane --hide
 import incidence_world.level04 --hide
 open IncidencePlane --hide
 
@@ -12,7 +11,7 @@ variables {Ω : Type} [IncidencePlane Ω] --hide
 /- Lemma : no-side-bar
 If two lines `r` and `s` do not share a point, then they are not equal.
 -/
-lemma if_pont_in_line_and_not_in_other_diferent {P : Ω} {r l : Line Ω} (hPr : P ∈ r)
+lemma ne_of_not_share_point {P : Ω} {r l : Line Ω} (hPr : P ∈ r)
 (hPl : P ∉ l): r ≠ l :=
 begin
   intro H,

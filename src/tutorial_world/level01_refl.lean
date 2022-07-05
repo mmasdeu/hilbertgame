@@ -33,12 +33,12 @@ of the form $A = A$, no matter how complicated $A$ is. Let's see it in action!
 Just delete `sorry` and type `refl,` (don't forget the comma!).
 -/
 
-variables {Point : Type} -- hide
+variables {Ω : Type} -- hide
 
 /- Lemma : no-side-bar
 If A is a point, then A = A.
 -/
-lemma refl_example (A : Point) : A = A :=
+lemma refl_example (A : Ω) : A = A :=
 begin
   refl,
   

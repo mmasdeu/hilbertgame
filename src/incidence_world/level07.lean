@@ -1,4 +1,3 @@
-import tutorial_world.incidenceplane --hide
 import incidence_world.level05 --hide
 open IncidencePlane --hide
 
@@ -14,17 +13,17 @@ variables {Ω : Type} [IncidencePlane Ω] --hide
 Start with an absourd reduction and use a `by_cases` with the statment `P = A`.
 -/
 
-/- Theorem :
+/- Lemma :
 There exist three lines that do not have a point in common.
 -/
-theorem three_distinct_lines : ∃ (r l t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ l ∧ P ∈ t)) :=
+lemma three_distinct_lines : ∃ (r l t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ l ∧ P ∈ t)) :=
 begin
   rcases (@existence Ω _) with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
   use line_through A B, use line_through A C, use line_through B C,
   intros P H,
   have h1 : line_through A C ≠ line_through A B, 
   {
-    exact if_pont_in_line_and_not_in_other_diferent (line_through_right A C) h,
+    exact ne_of_not_share_point (line_through_right A C) h,
   },
   by_cases hPA : P = A,
   {

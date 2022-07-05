@@ -5,12 +5,12 @@ type the little arrow by typing \l, and the system will change it automatically.
 -/
 
 
-variables {Point : Type} -- hide
+variables {Ω : Type} -- hide
 
 /- Lemma : no-side-bar
 If A, B and C are points with B = C and B = C, then A = C.
 -/
-lemma example_exact (A B C: Point) (h1 : B = A) (h2 : B = C) : A = C :=
+lemma example_exact (A B C: Ω) (h1 : B = A) (h2 : B = C) : A = C :=
 begin
   rw ←h1,
   rw h2,

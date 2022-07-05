@@ -80,12 +80,12 @@ Delete `sorry` and type `rw h,` (don't forget the comma!). Lean tries `refl` aft
 so you will see that this suffices.
 -/
 
-variables {Point : Type} -- hide
+variables {Ω : Type} -- hide
 
 /- Lemma : no-side-bar
 If A, B and C are points with A = B and B = C, then A = C.
 -/
-lemma example_rw (A B C: Point) (h1 : A = B) (h2 : B = C) : A = C :=
+lemma example_rw (A B C: Ω) (h1 : A = B) (h2 : B = C) : A = C :=
 begin
   rw h1,
   rw h2,
