@@ -20,11 +20,11 @@ jobs:
           echo Source base url: $source_base_url
           echo Web editor url: $web_editor_url
 
-      - name: Checkout ${{ env.branch }} branch
+      - name: Checkout main branch
         uses: actions/checkout@v2
         with:
           ref: ${{ env.branch }}
-
+  
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
