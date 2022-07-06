@@ -2,24 +2,20 @@ import incidence_world.level05 --hide
 open IncidencePlane --hide
 
 /-
-We will end this world by proving the last theorem using only incidence axioms. 
-Notice that with this theorem we are essentially proving the existence of triangles, and 
-only using incidence axioms!
+We end this world by proving the existence of triangles using only incidence axioms.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
-/- Hint : Click here for a hint, in case you get stuck.
-Start with an absourd reduction and use a `by_cases` with the statment `P = A`.
--/
-
 /- Lemma :
 There exist three lines that do not have a point in common.
 -/
-lemma three_distinct_lines : ∃ (r l t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ l ∧ P ∈ t)) :=
+lemma three_distinct_lines : ∃ (r s t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ s ∧ P ∈ t)) :=
 begin
-  rcases (@existence Ω _) with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
-  use line_through A B, use line_through A C, use line_through B C,
+  rcases existence Ω with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
+  use line_through A B,
+  use line_through A C,
+  use line_through B C,
   intros P H,
   have h1 : line_through A C ≠ line_through A B, 
   {

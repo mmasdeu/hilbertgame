@@ -1,4 +1,4 @@
-/- Tactic : rw / rwa
+/- Tactic : rw
 
 ## Summary
 

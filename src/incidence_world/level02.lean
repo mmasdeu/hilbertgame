@@ -2,24 +2,28 @@ import tutorial_world.level06_intro --hide
 open IncidencePlane --hide
 
 /-
-Now that we have introduced the basic *LEAN* tactics, 
+Now that we have introduced the basic Lean tactics, 
 let's move on to proving our first theorems.
-We will start with some of the theorems you have seen 
-in the theory classes using incidence axioms.
 
-To prove this theorem we will need to use two (sub)axioms
-(`line_through_left` and `line_through_right`) that you can find
-in the side bar.
+The goal of this world is to prove the existence of
+triangles, but we will start showing that there is no line
+that covers the whole plane. That is, every line misses
+at least one point.
+-/
+
+/- Hint : Click here for a hint, in case you get stuck.
+This is really a proof `by_cases`, and you will need to come up
+with some candidate points...
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
 /- Lemma :
-Given a line, there exists a point not in it.
+Every line misses at least one point.
 -/
 lemma exists_point_not_in_line (ℓ : Line Ω) : ∃ (P : Ω), P ∉ ℓ :=
 begin
-  rcases (@existence Ω _) with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
+  rcases existence Ω with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
   by_cases hA : A ∈ ℓ,
   {
     by_cases hB : B ∈ ℓ,
@@ -41,6 +45,10 @@ begin
   {
     use A,
   }
+
+
+
+
 
   
   

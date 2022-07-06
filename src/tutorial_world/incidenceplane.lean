@@ -92,11 +92,11 @@ notation A `*` B `*` C := IncidencePlane.between A B C
 
 -- Define again everything
 def line_through (P Q : Ω) : Line Ω := line_through' P Q
-lemma line_through_left (P Q : Point) : P ∈ (line_through P Q) := line_through_left' P Q
-lemma line_through_right (P Q : Point) : Q ∈ (line_through P Q) := line_through_right' P Q
+@[simp] lemma line_through_left (P Q : Point) : P ∈ (line_through P Q) := line_through_left' P Q
+@[simp] lemma line_through_right (P Q : Point) : Q ∈ (line_through P Q) := line_through_right' P Q
 lemma incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through P Q
 := incidence'
-lemma existence : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R ∧ ¬ R ∈ (line_through P Q) := existence'
+lemma existence (Ω : Type*) [IncidencePlane Ω] : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R ∧ ¬ R ∈ (line_through P Q) := existence'
 lemma between_symmetric {A B C : Point} : (A * B * C) → (C * B * A)  := between_symmetric'
 lemma different_of_between {A B C : Point} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C) := different_of_between'
 lemma collinear_of_between {A B C : Point} : (A * B * C) → ∃ ℓ : Line Point, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ := collinear_of_between'

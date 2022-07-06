@@ -23,11 +23,11 @@ begin
   cases h2 with s hs,
   have hr' : r = line_through Q R,
   {
-    apply incidence h hr.2.1 hr.2.2,
+    exact incidence h hr.2.1 hr.2.2,
   },
   have hs' : s = line_through Q R,
   {
-    apply incidence h hs.1 hs.2.1,
+    exact incidence h hs.1 hs.2.1,
   },
   have H : r = s,
   {
