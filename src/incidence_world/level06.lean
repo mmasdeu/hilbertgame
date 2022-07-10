@@ -2,32 +2,51 @@ import incidence_world.level05 --hide
 open IncidencePlane --hide
 
 /-
-Using the lemma we have just proved, we can now prove that
-a single point never determines a line. That is, that there are
-always at least two lines passing through any given point.
+We end this world by proving the existence of triangles using only incidence axioms.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
 
 /- Lemma :
-There are at least two different lines passing through a given point.
+There exist three lines that do not have a point in common.
 -/
-lemma point_exists_two_lines {P : Ω} : ∃ (r s: Line Ω), P ∈ s ∧ P ∈ r ∧ s ≠ r :=
+lemma three_distinct_lines : ∃ (r s t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ s ∧ P ∈ t)) :=
 begin
-  rcases (point_existence_postulate P) with ⟨Q, R, ⟨hPQ, hPR, hQR,H⟩⟩,
-  use line_through P Q,
-  use line_through P R,
-  split,
+  rcases existence Ω with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
+  use line_through A B,
+  use line_through A C,
+  use line_through B C,
+  intros P H,
+  have h1 : line_through A C ≠ line_through A B, 
   {
-    exact line_through_left P R,
+    exact ne_of_not_share_point (line_through_right A C) h,
   },
-  split,
+  by_cases hPA : P = A,
   {
-    exact line_through_left P Q,
+    have hAlBC : A ∈ line_through B C,
+    {
+      rw ← hPA,
+      exact H.2.2,
+    },
+    have H1 : line_through A C = line_through B C,
+    {
+      exact equal_lines_of_contain_two_points hAC (line_through_left A C) hAlBC (line_through_right A C) (line_through_right B C),
+    },
+    have H2 : line_through A C = line_through A B, 
+    {
+      rw H1,
+      exact equal_lines_of_contain_two_points hAB hAlBC (line_through_left A B) (line_through_left B C) (line_through_right A B),
+    },
+    exact h1 H2,
   },
   {
-    exact ne_of_not_share_point (line_through_right P R) H,
+    have h2 : line_through A C = line_through A B, 
+    {
+      exact equal_lines_of_contain_two_points hPA H.2.1 H.1 (line_through_left A C) (line_through_left A B),
+    },
+    exact h1 h2,
   }
+  
 
 
 
@@ -38,4 +57,12 @@ begin
 
 
 
+
+
+
+
+
+  
+  
+  
 end

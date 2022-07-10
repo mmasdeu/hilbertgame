@@ -1,9 +1,8 @@
 import tutorial_world.incidenceplane --hide
 open IncidencePlane --hide
 
-/- Axiom : incidence
-
-incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through' P Q
+/- Axiom :
+incidence : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through P Q
 -/
 
 /- Tactic : intro
@@ -50,11 +49,12 @@ a new hypothesis in the context. You can learn more about it in the side bar.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
+variables {A B : Ω} {r s : Line Ω} -- hide
 
 /- Lemma :
 If two lines contain two distinct points, then they are the same
 -/
-lemma equal_lines_of_contain_two_points {A B : Ω} {r s : Line Ω} :
+lemma equal_lines_of_contain_two_points :
 A ≠ B → A ∈ r →  A ∈ s → B ∈ r → B ∈ s → 	r = s :=
 begin
   intros hAB hAr hAs hBr hBs,
@@ -62,7 +62,7 @@ begin
   rw incidence hAB hAs hBs,
 
 
+
+
 end
-
-
 

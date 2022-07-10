@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level08_use --hide
 open IncidencePlane --hide
 /- Tactic : have
 
@@ -70,10 +70,10 @@ begin
   {
     exact incidence h h1.1 h1.2,
   },
+  rw hr,
   have hs : s = line_through B C,
   {
     exact incidence h h2.1 h2.2,
   },
-  rw hr,
   rw hs,
 end

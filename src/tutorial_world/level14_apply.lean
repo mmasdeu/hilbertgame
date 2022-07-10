@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level09_have --hide
 open IncidencePlane --hide
 /- Tactic : apply
 
@@ -29,16 +29,24 @@ that states exactly that your goal is true, provided that some hypotheses are sa
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
+variables {P Q : Ω}-- hide
 
 /- Lemma :
 The line through two points is a symmetrical concept
 -/
-lemma line_through_symmetrical {P Q : Ω} (h : P ≠ Q) : line_through Q P = line_through P Q :=
+lemma line_through_symmetrical (h : P ≠ Q) : line_through Q P = line_through P Q :=
 begin
   apply incidence,
-  exact h,
-  exact line_through_right Q P,
-  exact line_through_left Q P,
+  {
+    exact h,
+  },
+  {
+    exact line_through_right Q P,
+  },
+  {
+    exact line_through_left Q P,
+  }
+
 
 
 

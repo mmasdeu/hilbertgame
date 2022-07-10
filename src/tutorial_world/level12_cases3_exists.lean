@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level06_intro --hide
 open set IncidencePlane --hide
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
@@ -12,8 +12,8 @@ to satisfy.
 
 -/
 
-/- Lemma :
-...
+/- Lemma : no-side-bar
+Prove existence of a line through 4 points given lines through two subsets of three
 -/
 lemma exists_line_example (P Q R S : Ω) (h : Q ≠ R) (h1 : ∃ ℓ : Line Ω, P ∈ ℓ ∧ Q ∈ ℓ ∧ R ∈ ℓ)
 (h2 : ∃ ℓ : Line Ω, Q ∈ ℓ ∧ R ∈ ℓ ∧ S ∈ ℓ) :
@@ -21,18 +21,9 @@ lemma exists_line_example (P Q R S : Ω) (h : Q ≠ R) (h1 : ∃ ℓ : Line Ω, 
 begin
   cases h1 with r hr,
   cases h2 with s hs,
-  have hr' : r = line_through Q R,
-  {
-    exact incidence h hr.2.1 hr.2.2,
-  },
-  have hs' : s = line_through Q R,
-  {
-    exact incidence h hs.1 hs.2.1,
-  },
   have H : r = s,
   {
-    rw hr',
-    rw hs',
+    exact equal_lines_of_contain_two_points h hr.2.1 hs.1 hr.2.2 hs.2.1,
   },
   use r,
   split,
@@ -44,6 +35,9 @@ begin
   rw H,
   exact hs.2.2,
   
+
+
+
 
 
 

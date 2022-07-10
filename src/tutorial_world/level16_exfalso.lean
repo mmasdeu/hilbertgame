@@ -40,4 +40,10 @@ begin
   exfalso,
   apply h,
   exact line_through_left P Q,
+
+
+
+
+
+  
 end 

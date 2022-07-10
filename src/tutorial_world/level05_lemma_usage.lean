@@ -1,13 +1,11 @@
 import tutorial_world.incidenceplane --hide
 open IncidencePlane --hide
 
-/- Axiom : line_through_left
-
-line_through_left (P Q : Point) : P ∈ (line_through P Q)
+/- Axiom :
+line_through_left : P ∈ (line_through P Q)
 -/
-/- Axiom : line_through_right
-
-line_through_right (P Q : Point) : Q ∈ (line_through P Q)
+/- Axiom :
+line_through_right : Q ∈ (line_through P Q)
 -/
 
 /-

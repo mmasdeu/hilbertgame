@@ -14,21 +14,15 @@ and once you know which one you are going for you can change
 the goal with `left` or `right` to the appropriate choice.
 -/
 
-/- Axiom : mem_singleton_iff
-
-mem_singleton_iff : a ∈ {b} ↔ a = b
--/
-
 /-
 We have seen how to prove a goal of the form `P ∧ Q`, now you will learn how to prove
 a goal of the form `P ∨ Q`, which means that either `P` holds or `Q` holds.
 In this case, you will have to decide whether you can prove `P` or `Q`. The `left` and `right`
 tactics will allow you to change the goal to ⊢ P or ⊢ Q accordingly.
-
-The theorem `mem_singleton_iff` may be useful depending on how you set things up.
 -/
 
-variables {Ω : Type} [IncidencePlane Ω]
+variables {Ω : Type} [IncidencePlane Ω] -- hide
+
 /- Lemma : no-side-bar
 An example of the usage of left/right
 -/
@@ -49,8 +43,13 @@ begin
     exact line_through_right A B,
   },
   {
-    rw mem_singleton_iff at hP,
-    rw hP,
+    cases hP,
     exact h,
   }
+
+
+
+
+
+
 end

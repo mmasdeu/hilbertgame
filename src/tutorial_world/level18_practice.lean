@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level14_apply --hide
 open set IncidencePlane --hide
 
 /-
@@ -10,6 +10,7 @@ variables {Ω : Type} [IncidencePlane Ω] --hide
 /- Lemma :
 The only point on the segment A⬝A is A itself.
 -/
+@[simp] -- hide
 lemma one_point_segment (A B : Ω) : B ∈ A⬝A ↔ B = A :=
 begin
   split,
@@ -37,4 +38,12 @@ begin
     left,
     refl,
   },
+
+
+
+
+
+
+
+
 end

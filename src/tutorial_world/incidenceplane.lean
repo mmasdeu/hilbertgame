@@ -91,19 +91,31 @@ notation A `*` B `*` C := IncidencePlane.between A B C
 
 
 -- Define again everything
+
+-- A1
 def line_through (P Q : Ω) : Line Ω := line_through' P Q
-@[simp] lemma line_through_left (P Q : Point) : P ∈ (line_through P Q) := line_through_left' P Q
-@[simp] lemma line_through_right (P Q : Point) : Q ∈ (line_through P Q) := line_through_right' P Q
-lemma incidence {P Q : Point} {ℓ : Line Point} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through P Q
+@[simp] lemma line_through_left (P Q : Ω) : P ∈ (line_through P Q) := line_through_left' P Q
+@[simp] lemma line_through_right (P Q : Ω) : Q ∈ (line_through P Q) := line_through_right' P Q
+lemma incidence {P Q : Ω} {ℓ : Line Ω} : P ≠ Q → P ∈ ℓ → Q ∈ ℓ → ℓ = line_through P Q
 := incidence'
-lemma existence (Ω : Type*) [IncidencePlane Ω] : ∃ P Q R : Point, P ≠ Q ∧ P ≠ R ∧ Q ≠ R ∧ ¬ R ∈ (line_through P Q) := existence'
-lemma between_symmetric {A B C : Point} : (A * B * C) → (C * B * A)  := between_symmetric'
-lemma different_of_between {A B C : Point} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C) := different_of_between'
-lemma collinear_of_between {A B C : Point} : (A * B * C) → ∃ ℓ : Line Point, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ := collinear_of_between'
-lemma point_on_ray {A B : Point} (h: A ≠ B) : ∃ (C : Point), A * B * C := point_on_ray' h
-lemma between_of_collinear {A B C : Point} (h: ∃(ℓ : Line Point), A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ) : xor3 (A * B * C) ( B * A * C ) (A * C * B)
+
+-- A2
+lemma line_contains_two_points (ℓ : Line Ω) : ∃ P Q : Ω, P ≠ Q ∧ ℓ = line_through P Q
+:= line_contains_two_points' ℓ
+
+-- A3
+lemma existence (Ω : Type*) [IncidencePlane Ω] : ∃ P Q R : Ω, P ≠ Q ∧ P ≠ R ∧ Q ≠ R ∧
+R ∉ (line_through P Q) := existence'
+
+
+
+lemma between_symmetric {A B C : Ω} : (A * B * C) → (C * B * A)  := between_symmetric'
+lemma different_of_between {A B C : Ω} : (A * B * C) → (A ≠ B ∧ A ≠ C ∧ B ≠ C) := different_of_between'
+lemma collinear_of_between {A B C : Ω} : (A * B * C) → ∃ ℓ : Line Ω, A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ := collinear_of_between'
+lemma point_on_ray {A B : Ω} (h: A ≠ B) : ∃ (C : Ω), A * B * C := point_on_ray' h
+lemma between_of_collinear {A B C : Ω} (h: ∃(ℓ : Line Ω), A ∈ ℓ ∧ B ∈ ℓ ∧ C ∈ ℓ) : xor3 (A * B * C) ( B * A * C ) (A * C * B)
 := between_of_collinear' h
-lemma pasch {A B C D : Point} {ℓ : Line Point} (hnc: ¬ C ∈ line_through A B)
+lemma pasch {A B C D : Ω} {ℓ : Line Ω} (hnc: ¬ C ∈ line_through A B)
 (hnAl: ¬ (A ∈ ℓ)) (hnBl: ¬ B ∈ ℓ) (hnCl: ¬ C ∈ ℓ) (hDl: D ∈ ℓ) (hADB: A * D * B) :
 (∃ E ,  E ∈ ℓ ∧ (A * E * C)) xor (∃ E, E ∈ ℓ ∧ (B * E * C)) := pasch' hnc hnAl hnBl hnCl hDl hADB
 
@@ -128,8 +140,8 @@ A segment is the giving two points, A and B.
 We will use the notation A⬝B to denote the segment denoted by A and B. The segment A⬝B consists
 of all the points X such that A * X * B.
 -/
-structure Segment (Point : Type*) := 
-(A : Point) (B : Point)
+structure Segment (Ω : Type*) := 
+(A : Ω) (B : Ω)
 
 infix `⬝`:100 := Segment.mk
 
