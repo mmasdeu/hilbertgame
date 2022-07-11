@@ -13,7 +13,7 @@ to satisfy.
 -/
 
 /- Lemma : no-side-bar
-Prove existence of a line through 4 points given lines through two subsets of three
+A line through 4 points given lines through two subsets of three
 -/
 lemma exists_line_example (P Q R S : Ω) (h : Q ≠ R) (h1 : ∃ ℓ : Line Ω, P ∈ ℓ ∧ Q ∈ ℓ ∧ R ∈ ℓ)
 (h2 : ∃ ℓ : Line Ω, Q ∈ ℓ ∧ R ∈ ℓ ∧ S ∈ ℓ) :

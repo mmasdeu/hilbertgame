@@ -28,8 +28,8 @@ that states exactly that your goal is true, provided that some hypotheses are sa
 `apply h` will change your goal into proving your new hypotheses.
 -/
 
-variables {Ω : Type} [IncidencePlane Ω] --hide
-variables {P Q : Ω}-- hide
+variables {Ω : Type} [IncidencePlane Ω] -- hide
+variables {P Q : Ω} -- hide
 
 /- Lemma :
 The line through two points is a symmetrical concept

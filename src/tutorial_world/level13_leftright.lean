@@ -24,7 +24,7 @@ tactics will allow you to change the goal to ⊢ P or ⊢ Q accordingly.
 variables {Ω : Type} [IncidencePlane Ω] -- hide
 
 /- Lemma : no-side-bar
-An example of the usage of left/right
+Example of the usage of left and right
 -/
 lemma left_right_example (A B C : Ω) (h : C ∈ line_through A B) :
 A = C ∨ collinear ({A, B, C} : set Ω) :=
