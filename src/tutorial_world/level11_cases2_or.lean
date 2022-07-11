@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level10_cases1_and --hide
 open set IncidencePlane --hide
 
 variables {Ω : Type} [IncidencePlane Ω] --hide

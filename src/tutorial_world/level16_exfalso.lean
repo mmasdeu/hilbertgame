@@ -1,6 +1,5 @@
-import tutorial_world.incidenceplane -- hide
-import data.set.basic -- hide
-open set IncidencePlane -- hide
+import tutorial_world.level15_simp -- hide
+open IncidencePlane -- hide
 
 /- Tactic : exfalso
 

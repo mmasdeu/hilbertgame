@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level16_exfalso --hide
 open IncidencePlane --hide
 
 /- Tactic : by_cases

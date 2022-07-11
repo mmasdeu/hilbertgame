@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import tutorial_world.level09_have --hide
 open set IncidencePlane --hide
 
 /- Tactic : cases
