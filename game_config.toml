@@ -6,4 +6,4 @@ intro = "src/intro.lean"
 [[worlds]]
 name = "Tutorial World"
 id = 1
-levels = [ "src/tutorial_world/level0.lean" ]
+levels = [ "src/tutorial_world/level0*.lean" ]
