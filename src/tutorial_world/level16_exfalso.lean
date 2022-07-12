@@ -1,4 +1,4 @@
-import .level15_simp -- hide
+import tutorial_world.level15_simp -- hide
 open IncidencePlane -- hide
 
 /- Tactic : exfalso

@@ -1,4 +1,4 @@
-import .level07_split --hide
+import tutorial_world.level07_split --hide
 open IncidencePlane --hide
 open set --hide
 

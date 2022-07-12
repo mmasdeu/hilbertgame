@@ -1,4 +1,4 @@
-import .level06_intro --hide
+import tutorial_world.level06_intro --hide
 open IncidencePlane --hide
 
 /- Tactic : split

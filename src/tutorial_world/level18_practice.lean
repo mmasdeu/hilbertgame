@@ -1,4 +1,4 @@
-import .level17_by_cases --hide
+import tutorial_world.level17_by_cases --hide
 open set IncidencePlane --hide
 
 /-

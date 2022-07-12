@@ -1,4 +1,4 @@
-import .level04 --hide
+import incidence_world.level04 --hide
 open IncidencePlane --hide
 
 /-
