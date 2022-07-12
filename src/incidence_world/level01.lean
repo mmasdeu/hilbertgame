@@ -1,4 +1,4 @@
-import tutorial_world.level18_practice --hide
+import ..tutorial_world.level18_practice --hide
 open IncidencePlane --hide
 
 /- Axiom :

@@ -10,8 +10,7 @@ variables {Ω : Type} [IncidencePlane Ω] --hide
 /- Lemma :
 The only point on the segment A⬝A is A itself.
 -/
-@[simp] -- hide
-lemma one_point_segment (A B : Ω) : B ∈ A⬝A ↔ B = A :=
+@[simp] lemma one_point_segment (A B : Ω) : B ∈ A⬝A ↔ B = A :=
 begin
   split,
   {
