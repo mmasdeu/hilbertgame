@@ -1,4 +1,4 @@
-import tutorial_world.level12_cases3_exists --hide
+import .level12_cases3_exists --hide
 open IncidencePlane --hide
 open set --hide
 

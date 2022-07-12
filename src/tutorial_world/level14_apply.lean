@@ -1,4 +1,4 @@
-import tutorial_world.level13_leftright --hide
+import .level13_leftright --hide
 open IncidencePlane --hide
 /- Tactic : apply
 

@@ -1,4 +1,4 @@
-import tutorial_world.incidenceplane --hide
+import .incidenceplane --hide
 open IncidencePlane --hide
 
 /- Axiom :

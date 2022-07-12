@@ -1,4 +1,4 @@
-import tutorial_world.level08_use --hide
+import .level08_use --hide
 open IncidencePlane --hide
 /- Tactic : have
 

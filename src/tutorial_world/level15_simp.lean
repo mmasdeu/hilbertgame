@@ -1,4 +1,4 @@
-import tutorial_world.level14_apply --hide
+import .level14_apply --hide
 open IncidencePlane --hide
 
 /- Tactic : simp
