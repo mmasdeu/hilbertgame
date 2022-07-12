@@ -7,9 +7,3 @@ intro = "src/intro.lean"
 name = "Tutorial World"
 id = 1
 levels = [ "src/tutorial_world/level0*.lean", "src/tutorial_world/level1*.lean"]
-
-[[worlds]]
-name = "Incidence World"
-id = 2
-parents = [1]
-levels = [ "src/incidence_world/level*.lean"]
