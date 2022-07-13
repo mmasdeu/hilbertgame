@@ -12,5 +12,5 @@ levels = [ "src/tutorial_world/level*.lean" ]
 name = "Incidence World"
 id = 2
 parents = [1]
-levels = [ "src/incidence_world/level01.lean", "src/incidence_world/level02.lean", "src/incidence_world/level03.lean", "src/incidence_world/level04.lean","src/incidence_world/level05.lean"]
+levels = [ "src/incidence_world/level01.lean", "src/incidence_world/level02.lean", "src/incidence_world/level03.lean", "src/incidence_world/level04.lean","src/incidence_world/level05.lean","src/incidence_world/level06.lean"]
 
