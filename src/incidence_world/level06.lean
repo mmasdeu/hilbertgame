@@ -11,7 +11,8 @@ variables {Ω : Type} [IncidencePlane Ω] --hide
 /- Lemma :
 There exist three lines that do not have a point in common.
 -/
-lemma three_distinct_lines : ∃ (r s t: Line Ω), (∀ (P : Ω), ¬(P ∈ r ∧ P ∈ s ∧ P ∈ t)) :=
+lemma three_distinct_lines : ∃ (r s t: Line Ω), (∀ (P : Ω),
+¬(P ∈ r ∧ P ∈ s ∧ P ∈ t)) :=
 begin
   rcases existence Ω with ⟨A, B, C, ⟨hAB, hAC, hBC, h⟩⟩,
   use line_through A B,
