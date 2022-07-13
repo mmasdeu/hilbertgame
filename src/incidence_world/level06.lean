@@ -2,7 +2,8 @@ import incidence_world.level05 --hide
 open IncidencePlane --hide
 
 /-
-We end this world by proving the existence of triangles using only incidence axioms.
+We end this world by proving the existence of triangles
+using only incidence axioms.
 -/
 
 variables {Ω : Type} [IncidencePlane Ω] --hide
